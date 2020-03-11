@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML Processor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    
+    <style>
+        nav{
+            background-color: #283E4A;
+            margin:0;
+            text-align: center;
+            height:50px;
+        }
+
+        #title{
+            color:white;
+        }
+
+        .containers{
+            display: flex;
+            height: 90vh;
+            justify-content: center;
+            align-items: center;
+            background: #f8f8f8;
+            margin: 0;
+            padding:0;
+        }
+
+        .card{
+            width:25vw;
+            height:35vh;
+            border-radius:8px;
+        }
+
+        .button{
+            text-align: center;
+        }
+
+        .btn-danger{
+            margin-top:40px;
+            background-color: #ff5252;
+            font-family: 'Fjalla One', sans-serif;
+            width:109px;
+        }
+        
+        .custom-file{
+            margin-top:30px;
+        }
+
+        .custom-file-label{
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        btnclick = () => {
+             let file = document.getElementById('customFile').value;
+             console.log(file);
+            
+        }
+    </script>
+    
+</head>
+<body>
+  <nav>
+      <h1 id = "title">HTML Post Processing</h1>
+  </nav>
+
+    <div class = "containers">
+        <div class = "card">
+            <div class = "card-body">
+                <form  enctype = "multipart/form-data">
+                    <div class = "custom-file">
+                        <input 
+                            type = "file" 
+                            class = "custom-file-input" 
+                            id = "customFile" 
+                            name = "fileName"
+                        >
+                        <label 
+                            class = "custom-file-label" 
+                            for = "customFile">Choose the target HTML file
+                        </label>
+                    </div>
+                    <div class='button'>
+                        <button 
+                            type = "button" 
+                            class = "btn btn-danger" 
+                            onClick = btnclick()>PROCESS
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(".custom-file-input").on("change", function() {
+          var fileName = $(this).val().split("\\").pop();
+          $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+</body>
+</html>
